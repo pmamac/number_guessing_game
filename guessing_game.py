@@ -44,7 +44,7 @@ def start_game():
   attempts = []
 
   while True:
-    guess = input("Guess a number between 1 and 100: ")
+    guess = input(f"Guess a number between 1 and 100: ")
     try:
       guess = int(guess)
     except ValueError:
@@ -75,7 +75,7 @@ def start_game():
   print("The median of your attempts was {}.".format(median_attempt))
   print("The mode of your attempts was {}.".format(mode_attempt))
 
-  play_again = input("Do you want to play again? (y/n) ")
+  play_again = input(f"Do you want to play again? (y/n) ")
   if play_again.lower() == "y":
       start_game()
   else:
