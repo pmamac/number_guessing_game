@@ -34,12 +34,14 @@ import random
 import statistics
 
 def start_game():
+    # Upon starting the game the end-user will be greeted in four different langauges, to be inclusive of people that come from diverse backgrounds.
   print("""
     * English: Welcome to the Number Guessing Game!
     * Tagalog: Maligayang pagdating sa laro ng paghula ng numero!
     * Japanese: 数当てゲームへようこそ!
     * Chinese: 歡迎來到猜數字遊戲!
     """)
+    # end-of-note
   lucky_number = random.randint(1, 100)
   attempts = []
 
@@ -75,11 +77,17 @@ def start_game():
   print("The median of your attempts was {}.".format(median_attempt))
   print("The mode of your attempts was {}.".format(mode_attempt))
 
+  # This line of code ask the end-user if (he/she/they) wishes to play again.
   play_again = input(f"Do you want to play again? (y/n) ")
+  
   if play_again.lower() == "y":
       start_game()
   else:
+    #If they enter "n" a message will pop up thanking them for playing.
       print("Thanks for playing!")
 
 # Kick off the program by calling the start_game function.
 start_game()
+
+# This project is about building a console number guessing game that prompts a player to choose a number between a specified range of numbers.
+
