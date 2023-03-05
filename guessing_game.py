@@ -10,15 +10,23 @@ def start_game(high_score=0):
     * Chinese: 歡迎來到猜數字遊戲!
     """)
     
+    # Ask for the player's name
+    name = input("What's your name? ")
+
+    # Check if there's an existing high score for the player
+    try:
+        with open("high_scores.txt", "r") as f:
+            high_scores = [line.strip().split(",") for line in f.readlines()]
+            high_score = next((int(score) for player, score in high_scores if player == name), 0)
+    except (FileNotFoundError, ValueError):
+        high_score = 0
+
+    # Print the high score if it exists
+    if high_score > 0:
+        print(f"The high score is {high_score} guesses.\n")
+
     lucky_number = random.randint(1, 100)
     attempts = []
-
-    # Display the high score if it exists
-    def display_high_score():
-        if high_score > 0:
-            print(f"The high score is {high_score} guesses.")
-
-    display_high_score()
 
     while True:
         guess = input("Guess a number between 1 and 100: ")
@@ -48,8 +56,8 @@ def start_game(high_score=0):
     mode_attempt = statistics.mode(attempts)
 
     print(f"You took {num_attempts} attempts to guess the number.")
-    print(f"The mean of your attempts was {mean_attempt}.")
-    print(f"The median of your attempts was {median_attempt}.")
+    print(f"The mean of your attempts was {mean_attempt:.2f}.")
+    print(f"The median of your attempts was {median_attempt:.2f}.")
     print(f"The mode of your attempts was {mode_attempt}.")
 
     # This line of code ask the end-user if (he/she/they) wishes to play again.
@@ -61,6 +69,4 @@ def start_game(high_score=0):
     else:
         # If they enter "n" a message will pop up thanking them for playing.
         print("Thanks for playing!")
-
-# Kick off the program by calling the start_game function.
 start_game()
