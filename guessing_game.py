@@ -42,6 +42,8 @@ def start_game():
     * Chinese: 歡迎來到猜數字遊戲!
     """)
     # end-of-note
+    if high_score is not None:
+        print(f"The high score is {high_score} guesses.")
   lucky_number = random.randint(1, 100)
   attempts = []
 
